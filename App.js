@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./components/Navbar/Header";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home/Home";
+import SearchComponent from "./components/SearchComponent";
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Router>
+      <div>
+        <Header />
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/search" component={SearchComponent} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
