@@ -1,7 +1,6 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import GoogleMap from '../components/GoogleMap'; // Import GoogleMap component
-import HomeSearchBar from '../components/SearchBar';
+import HomeSearchBar from '../components/HomeSearchBar';
 
 export default function Home() {
   return (
@@ -15,8 +14,9 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF', // Set your desired background color
+    backgroundColor: '#ggg', // Set your desired background color
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
   },
 });

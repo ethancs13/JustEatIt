@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Nav() {
@@ -12,40 +12,40 @@ export default function Nav() {
 
   return (
     <View style={styles.navbar}>
-      <TouchableOpacity
+      <Pressable
         style={styles.navLink}
         onPress={() => navigation.navigate('Home')}
       >
         <Text>Home</Text>
-      </TouchableOpacity>
+      </Pressable>
       {/* Additional navigation links based on authentication status */}
       {/* Implement logic for Dashboard, Friends, Favorites, and About screens */}
       {/* Implement logic for handling login and signup */}
-      <TouchableOpacity
+      <Pressable
         style={styles.navLink}
         onPress={() => navigation.navigate('About')}
       >
         <Text>About</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      </Pressable>
+      <Pressable
         style={styles.navLink}
         onPress={() => navigation.navigate('Login')}
       >
         <Text>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      </Pressable>
+      <Pressable
         style={styles.navLink}
         onPress={() => navigation.navigate('SignUp')}
       >
         <Text>Signup</Text>
-      </TouchableOpacity>
+      </Pressable>
       {/* Implement logic for logout */}
-      {/* <TouchableOpacity
+      <Pressable
         style={styles.navLink}
         onPress={handleLogout}
       >
         <Text>Logout</Text>
-      </TouchableOpacity> */}
+      </Pressable>
     </View>
   );
 }

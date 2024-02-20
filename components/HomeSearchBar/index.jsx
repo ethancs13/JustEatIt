@@ -1,28 +1,49 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { TextInput, Button, View } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 const HomeSearchBar = () => {
   const [location, setLocation] = useState("");
-  const history = useHistory();
+  const navigation = useNavigation();
 
   const handleSearch = () => {
     if (location.trim() !== "") {
-      // Redirect to the search page with the search query
-      history.push(`/search?location=${encodeURIComponent(location)}`);
+      // Perform navigation to the search page with the search query
+      navigation.navigate('Search', { location: encodeURIComponent(location) });
     }
   };
 
   return (
-    <div className="search-bar">
-      <input
-        type="text"
+    <View style={styles.searchBar}>
+      <TextInput
+        style={styles.input}
         placeholder="Enter a city..."
         value={location}
-        onChange={(e) => setLocation(e.target.value)}
+        onChangeText={setLocation}
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+      <Button style={styles.button} title="Search" onPress={handleSearch} />
+    </View>
   );
+};
+
+const styles = {
+  searchBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 10,
+  },
+  input: {
+    flex: 1,
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginRight: 10,
+    paddingHorizontal: 10,
+  },
+  button: {
+    
+  }
 };
 
 export default HomeSearchBar;

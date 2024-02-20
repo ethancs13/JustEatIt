@@ -1,11 +1,16 @@
-import SignUpForm from "../components/SignUpForm";
+import React from 'react';
+import { View } from 'react-native';
+import SignUpForm from './SignUpForm';
+import { useNavigation } from '@react-navigation/native';
 
-export default function SignUp() {
+const SignUp = () => {
+  const navigation = useNavigation();
+
   return (
-    <div className="bgSignUp">
-      <div className="container">
-        <SignUpForm />
-      </div>
-    </div>
+    <View>
+      <SignUpForm navigation={navigation} />
+    </View>
   );
-}
+};
+
+export default SignUp;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Pressable } from 'react-native';
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-const LoginForm = () => {
+const LoginForm = ({ navigation }) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const [loginUser] = useMutation(LOGIN);
@@ -37,8 +37,7 @@ const LoginForm = () => {
           value={formData.username}
           onChangeText={(text) => handleInputChange('username', text)}
           autoCapitalize="none"
-          keyboardType="default"
-          returnKeyType="next"
+          inputMode="default"
         />
       </View>
       <View style={styles.inputContainer}>
@@ -48,21 +47,20 @@ const LoginForm = () => {
           value={formData.password}
           onChangeText={(text) => handleInputChange('password', text)}
           autoCapitalize="none"
-          keyboardType="default"
+          inputMode="default"
           secureTextEntry={true}
-          returnKeyType="done"
         />
         <Text style={styles.errorMessage}>{error}</Text>
       </View>
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+      <Pressable style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+      </Pressable>
       <View>
         <Text>
           Don't have an account?{' '}
-          <Text style={styles.link} onPress={() => navigation.navigate('SignUp')}>
-            Sign Up
-          </Text>
+          <Pressable onPress={() => navigation.navigate('SignUp')}>
+            <Text style={styles.link}>Sign Up</Text>
+          </Pressable>
         </Text>
       </View>
     </View>
@@ -93,6 +91,7 @@ const styles = {
     backgroundColor: 'blue',
     padding: 10,
     borderRadius: 5,
+    alignItems: 'center',
   },
   buttonText: {
     color: 'white',

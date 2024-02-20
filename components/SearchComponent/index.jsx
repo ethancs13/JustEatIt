@@ -5,7 +5,7 @@ import { handleSearch, getRandomRestaurant } from "../../utils/API";
 import SearchResults from "../SearchResults";
 import GoogleMap from "../GoogleMap";
 import IntroText from "./IntroText";
-import { Box, Input, Select, Button } from "native-base";
+import { Box, Input, Select, Pressable } from "native-base";
 
 const SearchComponent = () => {
   const [location, setLocation] = useState("");
@@ -67,12 +67,12 @@ const SearchComponent = () => {
             onChangeText={(text) => setLocation(text)}
             onSubmitEditing={search}
           />
-          <Button colorScheme="orange" size="lg" ml={2} onPress={search}>
+          <Pressable colorScheme="orange" size="lg" ml={2} onPress={search}>
             Search
-          </Button>
-          <Button colorScheme="orange" size="lg" ml={2} onPress={random}>
+          </Pressable>
+          <Pressable colorScheme="orange" size="lg" ml={2} onPress={random}>
             Just Eat It!
-          </Button>
+          </Pressable>
         </Box>
         <GoogleMap locations={results} showMap={showMap} />
         <SearchResults results={results} />
