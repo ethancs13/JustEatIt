@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { TextInput, Button, View } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-const HomeSearchBar = () => {
+const HomeSearchBar = ({ onSearch }) => {
   const [location, setLocation] = useState("");
   const navigation = useNavigation();
 
   const handleSearch = () => {
     if (location.trim() !== "") {
-      // Perform navigation to the search page with the search query
-      navigation.navigate('Search', { location: encodeURIComponent(location) });
+      onSearch(location); // Pass the search query to the parent component
     }
   };
 

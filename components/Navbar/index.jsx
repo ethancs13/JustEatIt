@@ -56,7 +56,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#fff', // Adjust as needed
-    height: 50,
+    marginTop: 50,
+    height: 60,
   },
   navLink: {
     padding: 10,
